@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>QR Code Generator</title>
+</head>
+<body>
+    <label for="urlInput">Enter URL:</label>
+    <input type="text" id="urlInput" placeholder="www.sample-qr.com">
+    <button id="generateButton">Generate QR Code</button>
+    <div id="qrCodeImage"></div>
+
+    <script src="qrcode.min.js"></script>
+    <script>
+        const generateButton = document.getElementById('generateButton');
+        const qrCodeImage = document.getElementById('qrCodeImage');
+        const urlInput = document.getElementById('urlInput');
+        
+        generateButton.addEventListener('click', () => {
+            const url = urlInput.value;
+            if (url) {
+                const qrcode = new QRCode(qrCodeImage, {
+                    text: url,
+                    width: 128,
+                    height: 128
+                });
+            }
+        });
+    </script>
+</body>
+</html>
